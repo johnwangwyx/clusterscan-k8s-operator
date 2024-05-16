@@ -20,22 +20,45 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
+// Represents the possible execution states of a ClusterScan.
+const (
+	ExecutionStatusSuccess    = "Success"
+	ExecutionStatusFailure    = "Failure"
+	ExecutionStatusInProgress = "InProgress"
+)
+
+// Defines the targets for a ClusterScan.
+type ClusterScanTargets struct {
+	Namespaces []string          `json:"namespaces,omitempty"`
+	Labels     map[string]string `json:"labels,omitempty"`
+}
 
 // ClusterScanSpec defines the desired state of ClusterScan
 type ClusterScanSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
-	// Foo is an example field of ClusterScan. Edit clusterscan_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Type of job to execute
+	JobType string `json:"jobType"`
+	// A cron scan schedule.
+	Schedule string `json:"schedule,omitempty"`
+	//Job-specific configuration options.
+	JobParams map[string]string `json:"jobParams,omitempty"`
+	// Allow for concurrent scans. (Defualt: False)
+	AllowConcurrency bool `json:"allowConcurrency,omitempty"`
+	// Maximum number of retries for failed scans. (Default: 0)
+	MaxRetry int `json:"maxRetry,omitempty"`
+	// Namespaces and labels that the scan should target.
+	Targets ClusterScanTargets `json:"targets,omitempty"`
 }
 
 // ClusterScanStatus defines the observed state of ClusterScan
 type ClusterScanStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
+	// Timestamp of the last job execution.
+	LastExecutionTime metav1.Time `json:"lastExecutionTime,omitempty"`
+	// Status of the last scan execution (Success, Failure, InProgress).
+	ExecutionStatus string `json:"executionStatus,omitempty"`
+	// Results contains a summary of the scan results.
+	Results string `json:"results,omitempty"`
+	// Number of resources has processed.
+	ScannedResources int `json:"scannedResources,omitempty"`
 }
 
 //+kubebuilder:object:root=true
