@@ -1,0 +1,23 @@
+# permissions for end users to view clusterscans.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterscan-k8s-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: clusterscan-viewer-role
+rules:
+- apiGroups:
+  - johnwangwyx.io.io.github.johnwangwyx
+  resources:
+  - clusterscans
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - johnwangwyx.io.io.github.johnwangwyx
+  resources:
+  - clusterscans/status
+  verbs:
+  - get

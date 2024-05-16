@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- johnwangwyx.io_v1_clusterscan.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
