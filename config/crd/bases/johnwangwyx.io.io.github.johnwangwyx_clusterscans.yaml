@@ -1,0 +1,97 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.14.0
+  name: clusterscans.johnwangwyx.io.io.github.johnwangwyx
+spec:
+  group: johnwangwyx.io.io.github.johnwangwyx
+  names:
+    kind: ClusterScan
+    listKind: ClusterScanList
+    plural: clusterscans
+    singular: clusterscan
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: ClusterScan is the Schema for the clusterscans API
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: ClusterScanSpec defines the desired state of ClusterScan
+            properties:
+              active:
+                description: Indicated the ClusterScan (Reconciliation) is stopped.
+                type: boolean
+              allowConcurrency:
+                description: 'Allow for concurrent scans. (Defualt: False)'
+                type: boolean
+              jobParams:
+                additionalProperties:
+                  type: string
+                description: Job-specific configuration options.
+                type: object
+              jobType:
+                description: Type of job to execute
+                type: string
+              maxRetry:
+                description: 'Maximum number of retries for failed scans. (Default:
+                  0)'
+                type: integer
+              schedule:
+                description: A cron scan schedule.
+                type: string
+              targets:
+                description: Namespaces and labels that the scan should target.
+                properties:
+                  labels:
+                    additionalProperties:
+                      type: string
+                    type: object
+                  namespaces:
+                    items:
+                      type: string
+                    type: array
+                type: object
+            required:
+            - jobType
+            type: object
+          status:
+            description: ClusterScanStatus defines the observed state of ClusterScan
+            properties:
+              LastStatusChange:
+                description: Timestamp of the last status change.
+                format: date-time
+                type: string
+              executionStatus:
+                description: Status of the last scan execution (Success, Failure,
+                  InProgress).
+                type: string
+              results:
+                description: Results contains a summary of the scan results.
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

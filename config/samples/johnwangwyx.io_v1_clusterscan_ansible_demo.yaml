@@ -6,4 +6,10 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
   name: clusterscan-sample
 spec:
-  # TODO(user): Add fields here
+  jobType: ansible
+  maxRetry: 3
+  schedule: "*/2 * * * *"
+  jobParams:
+    ENV_VAR1: "ExampleValue1"
+    ENV_VAR2: "ExampleValue2"
+    ENV_VAR3: "ExampleValue3"

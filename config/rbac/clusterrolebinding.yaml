@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: clusterscan-operator
+subjects:
+  - kind: ServiceAccount
+    name: clusterscan-k8s-operator-controller-manager
+    namespace: clusterscan-k8s-operator-system
+roleRef:
+  kind: ClusterRole
+  name: clusterscan-operator
+  apiGroup: rbac.authorization.k8s.io

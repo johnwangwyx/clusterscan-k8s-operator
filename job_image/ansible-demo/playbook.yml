@@ -1,0 +1,13 @@
+---
+- name: Print all OS environment variables using printenv
+  hosts: localhost
+  gather_facts: yes
+  tasks:
+    - name: Execute printenv
+      ansible.builtin.shell:
+        cmd: printenv
+      register: printenv_output
+
+    - name: Print output of printenv
+      ansible.builtin.debug:
+        msg: "stdout: {{ printenv_output.stdout }} stderr: {{ printenv_output.stderr }}"

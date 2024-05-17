@@ -22,9 +22,11 @@ import (
 
 // Represents the possible execution states of a ClusterScan.
 const (
-	ExecutionStatusSuccess    = "Success"
-	ExecutionStatusFailure    = "Failure"
-	ExecutionStatusInProgress = "InProgress"
+	ExecutionStatusSuccess         = "Success"
+	ExecutionStatusFailure         = "Failure"
+	ExecutionStatusInProgress      = "InProgress"
+	ExecutionStatusInProgressRetry = "InProgress-Retry"
+	ExecutionStatusInit            = "Initialized"
 )
 
 // Defines the targets for a ClusterScan.
@@ -47,18 +49,20 @@ type ClusterScanSpec struct {
 	MaxRetry int `json:"maxRetry,omitempty"`
 	// Namespaces and labels that the scan should target.
 	Targets ClusterScanTargets `json:"targets,omitempty"`
+	// Indicated the ClusterScan (Reconciliation) is stopped.
+	Stopped bool `json:"active,omitempty"`
 }
 
 // ClusterScanStatus defines the observed state of ClusterScan
 type ClusterScanStatus struct {
-	// Timestamp of the last job execution.
-	LastExecutionTime metav1.Time `json:"lastExecutionTime,omitempty"`
+	// Timestamp of the last status change.
+	LastStatusChange metav1.Time `json:"LastStatusChange,omitempty"`
 	// Status of the last scan execution (Success, Failure, InProgress).
 	ExecutionStatus string `json:"executionStatus,omitempty"`
 	// Results contains a summary of the scan results.
 	Results string `json:"results,omitempty"`
 	// Number of resources has processed.
-	ScannedResources int `json:"scannedResources,omitempty"`
+	// ScannedResources int `json:"scannedResources,omitempty"`
 }
 
 //+kubebuilder:object:root=true
