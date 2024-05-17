@@ -18,10 +18,18 @@ https://github.com/johnwangwyx/clusterscan-k8s-operator/compare/ba7959014ec3aa55
 
 # Referenced Docs:
 Some doc I found really helpful in this journey:
-https://pkg.go.dev/encoding/json#Marshal
+
+https://book.kubebuilder.io/getting-started
+
+https://minikube.sigs.k8s.io/docs/start/
+
 https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
+
 https://github.com/robfig/cron
+
 https://github.com/kubernetes/api
+
 https://kubernetes.io/docs/reference/using-api/api-concepts/
+
 https://yash-kukreja-98.medium.com/develop-on-kubernetes-series-demystifying-the-for-vs-owns-vs-watches-controller-builders-in-c11ab32a046e
 
