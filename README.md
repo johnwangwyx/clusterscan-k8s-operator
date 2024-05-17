@@ -16,9 +16,10 @@ https://github.com/johnwangwyx/clusterscan-k8s-operator/compare/ba7959014ec3aa55
 * Set ownership for the jobs created by the cronjob to the same operator. With testing, it is found that the cron children's job will not inherit this ownership and the cluster can miss reconciliation for them. (The workaround is to have a periodic reconciliation but this sort of hinders the event-based approach we had here)
 * Introduce more scheduling options beyond standard cron expressions(like dynamic scheduling based on cluster events or metrics thresholds that I am thinking of)
 * Ensure that all resources created by the operator are properly cleaned up when the operator itself is deleted.
+* Add unit tests to ensure code and branch coverages.
 
 # Referenced Docs:
-Some doc I found really helpful in this journey:
+Some doc I found really helpful in this journey learning k8s, minikube, kubebuilder, and k8s operators:
 
 https://book.kubebuilder.io/getting-started
 
