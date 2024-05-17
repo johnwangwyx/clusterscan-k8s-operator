@@ -15,3 +15,13 @@ https://github.com/johnwangwyx/clusterscan-k8s-operator/compare/ba7959014ec3aa55
 * Set ownership for the jobs created by the cronjob to the same operator. With testing, it is found that the cron children's job will not inherit this ownership and the cluster can miss reconciliation for them. (The workaround is to have a periodic reconciliation but this sort of hinders the event-based approach we had here)
 * Introduce more scheduling options beyond standard cron expressions(like dynamic scheduling based on cluster events or metrics thresholds that I am thinking of)
 * Ensure that all resources created by the operator are properly cleaned up when the operator itself is deleted.
+
+# Referenced Docs:
+Some doc I found really helpful in this journey:
+https://pkg.go.dev/encoding/json#Marshal
+https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
+https://github.com/robfig/cron
+https://github.com/kubernetes/api
+https://kubernetes.io/docs/reference/using-api/api-concepts/
+https://yash-kukreja-98.medium.com/develop-on-kubernetes-series-demystifying-the-for-vs-owns-vs-watches-controller-builders-in-c11ab32a046e
+
