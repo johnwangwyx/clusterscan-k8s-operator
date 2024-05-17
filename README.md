@@ -1,13 +1,13 @@
 # DEMO
-The demo Video can be found on: https://youtu.be/jq9gt4NBuGs
+The demo Video can be found on Youtube [here](https://youtu.be/jq9gt4NBuGs)
+
 In the first half of the video, I talked about the design considerations and some best practices and worked through the reconcile logic. The later half is the actual demo. (sorry if it is a bit lengthy)
 
 # clusterscan-k8s-operator
 A clusterscan operator that can execute configurable jobs and cronjobs.
 
 # Changes
-You can use this link to see the changes added after the kubebuilder init:
-https://github.com/johnwangwyx/clusterscan-k8s-operator/compare/ba7959014ec3aa5524f959c9aa8f2f5b70bccb4a..95a2678a5e3b87e81c759a19f0a4a493f460b741
+You can use this [link](https://github.com/johnwangwyx/clusterscan-k8s-operator/compare/ba7959014ec3aa5524f959c9aa8f2f5b70bccb4a..95a2678a5e3b87e81c759a19f0a4a493f460b741) to see the changes added after the kubebuilder init:
 
 # Future considerations:
 * Adding a figuration management file or system logic to manage the variables and job-specific config.
