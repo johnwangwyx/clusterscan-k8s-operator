@@ -1,8 +1,3 @@
-# DEMO
-The demo Video can be found on Youtube [here](https://youtu.be/jq9gt4NBuGs)
-
-In the first half of the video, I talked about the design considerations and some best practices and worked through the reconcile logic. The later half is the actual demo. (sorry if it is a bit lengthy)
-
 # clusterscan-k8s-operator
 A clusterscan operator that can execute configurable jobs and cronjobs.
 
